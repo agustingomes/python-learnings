@@ -1,0 +1,29 @@
+name: "Testing pipeline"
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+jobs:
+  tests:
+    name: "Python Test"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version:
+          - "3.11"
+          - "3.12"
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "${{ matrix.python-version }}"
+          cache: 'pip'
+          cache-dependency-path: 'requirements/test.txt'
+      - name: 'Installing dependencies'
+        run: pip install -r requirements/test.txt
+      - name: 'Tests'
+        env:
+          PYTHONPATH: .
+        run: pytest
