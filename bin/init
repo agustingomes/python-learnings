@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+set -euo pipefail
+
+# This assumes Python 3.11 or newer is installed.
+rm -rf .venv
+python -m venv .venv
+echo "run the command to activate the virtual environment:"
+echo "    source .venv/bin/activate                       "

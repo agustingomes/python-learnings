@@ -2,6 +2,11 @@
 
 set -euo pipefail
 
+bin/init
+source .venv/bin/activate
+
+pip install -r requirements/test.txt
+
 export PYTHONPATH=.
 
 pytest
