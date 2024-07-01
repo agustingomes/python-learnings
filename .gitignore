@@ -1,1 +1,6 @@
-/.venv
+/.python-version
+/.mypy*
+/.*_cache
+/python-learnings
+/**/__pycache__
+/*.sqlite*

@@ -7,11 +7,10 @@ on:
 jobs:
   tests:
     name: "Python Test"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
         python-version:
-          - "3.11"
           - "3.12"
     steps:
       - name: "Checkout"
@@ -19,11 +18,13 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: "${{ matrix.python-version }}"
-          cache: 'pip'
-          cache-dependency-path: 'requirements/test.txt'
-      - name: 'Installing dependencies'
-        run: pip install -r requirements/test.txt
-      - name: 'Tests'
+          cache: "pip"
+          cache-dependency-path: "poetry.lock"
+      - name: "Installing Poetry"
+        run: pip install --upgrade pip poetry==1.8.3
+      - name: "Installing Dependencies"
+        run: poetry install
+      - name: "Tests"
         env:
           PYTHONPATH: .
         run: pytest

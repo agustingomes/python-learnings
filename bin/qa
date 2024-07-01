@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+
+set -euo pipefail
+
+source activate
+
+set -x
+
+isort {src,tests}
+mypy --strict {src,tests}
+ruff format
+pytest

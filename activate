@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+source python-learnings/bin/activate
+
+set -a
+source env.python
+set +a

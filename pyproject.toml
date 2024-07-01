@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "python-learnings"
+version = "0.1.0"
+description = ""
+authors = ["Agustin Gomes <me@agustingomes.com>"]
+readme = "README.md"
+package-mode = false
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.dependencies]
+python = "3.12.*"
+requests = "^2.32.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.3"
+types-requests = "^2.32.0.20240712"
+monkeytype = "^23.3.0"
+isort = "^5.13.2"
+ruff = "^0.5.1"
+mypy = "^1.10.1"
+type-enforced = "^1.5.0"
+
+[tool.pytest.ini_options]
+python_files = ["*.py"] # Add "*.py" to include all Python files
+testpaths = [
+    "tests"
+]
+addopts = "-v --tb=short"
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration (deselect with '-m \"not integration\"')"
+]
