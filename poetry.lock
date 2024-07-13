@@ -427,15 +427,22 @@ files = [
 ]
 
 [[package]]
-name = "type-enforced"
-version = "1.5.0"
-description = "A pure python type enforcer for python type annotations"
+name = "typeguard"
+version = "4.3.0"
+description = "Run-time type checker for Python"
 optional = false
-python-versions = ">=3.9"
+python-versions = ">=3.8"
 files = [
-    {file = "type_enforced-1.5.0-py3-none-any.whl", hash = "sha256:3e16c2f9b613cce2c9c3f5a5f6fd1c1d5e9d12a69d74824b8b751f8631a273af"},
-    {file = "type_enforced-1.5.0.tar.gz", hash = "sha256:91b644ebd960f09cd565cd19de80784a6e616f76bd2b26ada6338e87356b7b83"},
+    {file = "typeguard-4.3.0-py3-none-any.whl", hash = "sha256:4d24c5b39a117f8a895b9da7a9b3114f04eb63bade45a4492de49b175b6f7dfa"},
+    {file = "typeguard-4.3.0.tar.gz", hash = "sha256:92ee6a0aec9135181eae6067ebd617fd9de8d75d714fb548728a4933b1dea651"},
 ]
+
+[package.dependencies]
+typing-extensions = ">=4.10.0"
+
+[package.extras]
+doc = ["Sphinx (>=7)", "packaging", "sphinx-autodoc-typehints (>=1.2.0)", "sphinx-rtd-theme (>=1.3.0)"]
+test = ["coverage[toml] (>=7)", "mypy (>=1.2.0)", "pytest (>=7)"]
 
 [[package]]
 name = "types-requests"
@@ -482,4 +489,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "3.12.*"
-content-hash = "65077e42259d7601c0ce5e38af1f053707d976f5ff644ef5ca3517a3720c40ae"
+content-hash = "d1cea6b2cc1840df34c7732c3082adbcd177bb74420096a1ab8494d8c559ae17"

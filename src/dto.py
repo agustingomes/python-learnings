@@ -2,6 +2,8 @@ from dataclasses import dataclass
 from typing import TypedDict
 from uuid import UUID
 
+from typeguard import typechecked
+
 
 @dataclass(frozen=True)
 class PersonDictionary(TypedDict):
@@ -20,6 +22,7 @@ class Person:
         return f"{self.name}: {str(self.identity)}"
 
     @staticmethod
+    @typechecked
     def from_dict(response: PersonDictionary) -> "Person":
         return Person(
             identity=UUID(response["id"]),
