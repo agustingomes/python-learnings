@@ -6,12 +6,19 @@ on:
       - main
 jobs:
   tests:
-    name: "Python Test"
+    name: "${{ matrix.python-version }}: ${{ matrix.python-tools.name }}"
     runs-on: ubuntu-24.04
     strategy:
       matrix:
         python-version:
           - "3.12"
+        python-tools:
+          - name: "Ruff"
+            command: "ruff check"
+          - name: "MyPy static type checking"
+            command: "mypy --strict {src,tests}"
+          - name: "Tests"
+            command: "pytest"
     steps:
       - name: "Checkout"
         uses: actions/checkout@v4
@@ -24,7 +31,8 @@ jobs:
         run: pip install --upgrade pip poetry==1.8.3
       - name: "Installing Dependencies"
         run: poetry install
-      - name: "Tests"
+      - name: "${{ matrix.python-tools.name }}"
+        run: poetry run ${{ matrix.python-tools.command }}
         env:
           PYTHONPATH: .
-        run: pytest
+
